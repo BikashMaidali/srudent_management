@@ -20,13 +20,23 @@
             </div>
              
             <div>
-                <x-label for="phone" value="{{ __('phone') }}" />
-                <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
+                <x-label for="student_no" value="{{ __('Student Number') }}" />
+                <x-input id="student_no" class="block mt-1 w-full" type="text" name="student_no" required autofocus autocomplete="student_no" />
+            </div>
+
+            <div>
+                <x-label for="date_of_birth" value="{{ __('Date Of Birth') }}" />
+                <x-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required autofocus autocomplete="date_of_birth" place />
             </div>
 
            <div>
-                <x-label for="address" value="{{ __('address') }}" />
-                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
+                <x-label for="class" value="{{ __('Class') }}" />
+                <x-input id="class" class="block mt-1 w-full" type="text" name="class" :value="old('class')" required autofocus autocomplete="class" />
+            
+            </div>
+            <div>
+                <x-label for="section" value="{{ __('Section') }}" />
+                <x-input id="section" class="block mt-1 w-full" type="text" name="section" :value="old('section')" required autofocus autocomplete="section" />
             
             </div>
 

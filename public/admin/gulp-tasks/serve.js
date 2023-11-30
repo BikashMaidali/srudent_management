@@ -11,7 +11,7 @@ var autoprefixer = require('gulp-autoprefixer');
 
 
 gulp.task('sass', function () {
-    return gulp.src('./assets/scss/**/*.scss')
+    return gulp.src('./scss/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(plumber({
             errorHandler: function (err) {
@@ -23,12 +23,12 @@ gulp.task('sass', function () {
             }
         }))
         .pipe(sass())
-        // .pipe(autoprefixer({
-        //     overrideBrowserslist: ['last 2 versions'],
-        //     cascade: false
-        // }))
-        .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('./assets/css'))
+        .pipe(autoprefixer({
+            overrideBrowserslist: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./css'))
         .pipe(browserSync.stream());
 });
 
@@ -42,15 +42,15 @@ gulp.task('serve', gulp.series('sass', function () {
         notify: false
     });
 
-    gulp.watch('./assets/scss/**/*.scss', gulp.series('sass'));
-    gulp.watch(['./assets/js/**/*.js', './**/*.html', './assets/css/**/*.css']).on('change', browserSync.reload);
+    gulp.watch('./scss/**/*.scss', gulp.series('sass'));
+    gulp.watch(['./js/**/*.js', './**/*.html', './css/**/*.css']).on('change', browserSync.reload);
 
 }));
 
 
 
 gulp.task('sass:watch', function () {
-    gulp.watch('./assets/scss/**/*.scss');
+    gulp.watch('./scss/**/*.scss');
 });
 
 

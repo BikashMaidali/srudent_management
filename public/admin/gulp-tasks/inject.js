@@ -25,9 +25,10 @@ gulp.task('injectPartial', function () {
 gulp.task('injectAssets', function () {
     return gulp.src(["./**/*.html"])
         .pipe(inject(gulp.src([
-            './assets/vendors/mdi/css/materialdesignicons.min.css',
-            './assets/vendors/css/vendor.bundle.base.css',
-            './assets/vendors/js/vendor.bundle.base.js',
+            './vendors/simple-line-icons/css/simple-line-icons.css',
+            './vendors/flag-icon-css/css/flag-icon.min.css',
+            './vendors/css/vendor.bundle.base.css',
+            './vendors/js/vendor.bundle.base.js',
         ], {
             read: false
         }), {
@@ -35,11 +36,8 @@ gulp.task('injectAssets', function () {
             relative: true
         }))
         .pipe(inject(gulp.src([
-            './assets/js/off-canvas.js',
-            './assets/js/hoverable-collapse.js',
-            './assets/js/misc.js',
-            './assets/js/settings.js',
-            './assets/js/todolist.js'
+            './js/off-canvas.js',
+            './js/misc.js'
         ], {
             read: false
         }), {
@@ -55,15 +53,14 @@ gulp.task('replacePath', function () {
     var replacePath1 = gulp.src('./pages/**/*.html', {
             base: "./"
         })
-        .pipe(replace('src="assets/images/', 'src="../../assets/images/'))
+        .pipe(replace('src="images/', 'src="../../images/'))
         .pipe(replace('href="pages/', 'href="../../pages/'))
-        .pipe(replace('href="documentation"', 'href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html"'))
         .pipe(replace('href="index.html"', 'href="../../index.html"'))
         .pipe(gulp.dest('.'));
     var replacePath2 = gulp.src('./**/index.html', {
             base: "./"
         })
-        .pipe(replace('href="documentation"', 'href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html"'))
+        .pipe(replace('src="images/', 'src="images/'))
         .pipe(gulp.dest('.'));
     return merge(replacePath1, replacePath2);
 });
